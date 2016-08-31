@@ -26,7 +26,7 @@ var dashboard = new ParseDashboard({
       "pass":"pass"
     }
   ]
-});
+}, true);
 
 if (!databaseUri) {
   console.log('DATABASE_URI not specified, falling back to localhost.');
