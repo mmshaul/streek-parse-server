@@ -12,12 +12,12 @@ var dashboard = new ParseDashboard({
   "allowInsecureHTTP": true,
   "apps": [
       {
-        "serverURL": "mongodb://mmshaul:gr33nD08!cco0mmppo0s5e3@candidate.53.mongolayer.com:11096,candidate.54.mongolayer.com:11290/streek?replicaSet=set-57ae4de4efcc02c0ba000a79",
-      "appId": "oXN8pBL8VZJ1T4QYZF6Avhbh8e7wZzXxMOXfJ0mP",
-      "masterKey": "tK67oqI3sePMPNChRqBpI5dWS9mRvKtXWj7FqFJ5",
+        "serverURL": process.env.SERVER_URL,
+      "appId": process.env.APP_ID,
+      "masterKey": process.env.MASTER_KEY,
       "appName": "Streek",
       "javascriptKey": "iOWKXxdgWeVCeBVTiZxJaLLtU38422UaIOP7mpIO",
-      "restKey": "hAWYr0xlTx8SAHMV8AGX3KTMHJffydHrlQzO9c8R" 
+      "restKey": "hAWYr0xlTx8SAHMV8AGX3KTMHJffydHrlQzO9c8R",
       }
   ],
     "users": [
