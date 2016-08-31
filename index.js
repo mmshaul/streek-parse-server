@@ -24,7 +24,7 @@ var dashboard = new ParseDashboard({
       "pass":"pass"
     }
   ]
-})
+});
 
 if (!databaseUri) {
   console.log('DATABASE_URI not specified, falling back to localhost.');
@@ -52,6 +52,9 @@ var api = new ParseServer({
 // javascriptKey, restAPIKey, dotNetKey, clientKey
 
 var app = express();
+
+//dashboard route
+app.use("/dashboard", dashboard);
 
 // Serve static assets from the /public folder
 app.use('/public', express.static(path.join(__dirname, '/public')));
