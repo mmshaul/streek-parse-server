@@ -14,7 +14,7 @@
     "parse": "~1.8.0",
     "parse-server": "~2.2.12",
     "parse-server-s3-adapter": "^1.0.5",
-    "parse-dashboard":"1.0.14"
+    "parse-dashboard": "1.0.14"
   },
   "scripts": {
     "start": "node index.js"
