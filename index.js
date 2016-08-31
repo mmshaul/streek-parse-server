@@ -7,6 +7,24 @@ var path = require('path');
 var S3Adapter = require('parse-server').S3Adapter;
 console.log('my bucket: ' + process.env.S3_BUCKET);
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
+var dashboard = new ParseDashboard({
+  "apps": [
+      {
+        "serverURL": "mongodb://mmshaul:gr33nD08!cco0mmppo0s5e3@candidate.53.mongolayer.com:11096,candidate.54.mongolayer.com:11290/streek?replicaSet=set-57ae4de4efcc02c0ba000a79",
+      "appId": "oXN8pBL8VZJ1T4QYZF6Avhbh8e7wZzXxMOXfJ0mP",
+      "masterKey": "tK67oqI3sePMPNChRqBpI5dWS9mRvKtXWj7FqFJ5",
+      "appName": "Streek",
+      "javascriptKey": "iOWKXxdgWeVCeBVTiZxJaLLtU38422UaIOP7mpIO",
+      "restKey": "hAWYr0xlTx8SAHMV8AGX3KTMHJffydHrlQzO9c8R" 
+      }
+  ],
+    "users": [
+    {
+      "user":"user1",
+      "pass":"pass"
+    }
+  ]
+})
 
 if (!databaseUri) {
   console.log('DATABASE_URI not specified, falling back to localhost.');
