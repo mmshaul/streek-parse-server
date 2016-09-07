@@ -16,18 +16,18 @@ var dashboard = new ParseDashboard({
       "appId": process.env.APP_ID,
       "masterKey": process.env.MASTER_KEY,
       "appName": "Streek",
-      "javascriptKey": "iOWKXxdgWeVCeBVTiZxJaLLtU38422UaIOP7mpIO",
-      "restKey": "hAWYr0xlTx8SAHMV8AGX3KTMHJffydHrlQzO9c8R",
+      "javascriptKey": process.env.JAVASCRIPT_KEY,
+      "restKey": process.env.REST_KEY,
       }
   ],
     "users": [
     {
       "user":"user1",
-      "pass":"pass"
+      "pass":process.env.USER1_PASS
     },
        {
       "user":"user2",
-      "pass":"pass"
+      "pass":process.env.USER2_PASS
     }
   ]
 }, true);
