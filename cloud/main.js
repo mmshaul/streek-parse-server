@@ -2,40 +2,42 @@ var moment = require("../node_modules/moment/moment.js");
 
 // Use Parse.Cloud.define to define as many cloud functions as you want.
 // For example:
-Parse.Cloud.job("sendDailyNotification", function(req, res) {
+
+//jobs do not work with parse-server, must move this to cron or something similar
+// Parse.Cloud.job("sendDailyNotification", function(req, res) {
  
-var userQuery = new Parse.Query(Parse.User)
-var today = moment()
+// var userQuery = new Parse.Query(Parse.User)
+// var today = moment()
 
-var todayIntroDate = moment().startOf('day');
+// var todayIntroDate = moment().startOf('day');
 
-//var yesterdayIntroDate = todayIntroDate.subtract('days', 1)._d;
-var todayIntroDateDay = todayIntroDate._d;
-console.log("today:");
-console.log(todayIntroDateDay);
+// //var yesterdayIntroDate = todayIntroDate.subtract('days', 1)._d;
+// var todayIntroDateDay = todayIntroDate._d;
+// console.log("today:");
+// console.log(todayIntroDateDay);
 
-userQuery.lessThan("lastCompletedDay", todayIntroDateDay);
+// userQuery.lessThan("lastCompletedDay", todayIntroDateDay);
 
- var messageText = "We picked 5 new items just for YOU! It's time to get back #onstreek"
+//  var messageText = "We picked 5 new items just for YOU! It's time to get back #onstreek"
 
-  var pushQuery = new Parse.Query(Parse.Installation);
-  pushQuery.matchesQuery("user", userQuery)
+//   var pushQuery = new Parse.Query(Parse.Installation);
+//   pushQuery.matchesQuery("user", userQuery)
 
-  Parse.Push.send({
-    where: pushQuery, // Set our Installation query
-    data: {
-      alert: messageText
-    }
-  }).then(function() {
-    // Push was successful
-    res.success();
-  }, function(error) {
-    res.error(error.message);
-    throw "Got an error " + error.code + " : " + error.message;
-  });
+//   Parse.Push.send({
+//     where: pushQuery, // Set our Installation query
+//     data: {
+//       alert: messageText
+//     }
+//   }).then(function() {
+//     // Push was successful
+//     res.success();
+//   }, function(error) {
+//     res.error(error.message);
+//     throw "Got an error " + error.code + " : " + error.message;
+//   });
 
  
-});
+// });
 
 Parse.Cloud.define("setRefCodeUseCount", function(req, res) {
  
@@ -132,164 +134,166 @@ function getUser(userId)
 
 // };
 
-Parse.Cloud.job("setItemTypesandCategories", function(req, res) {
 
-    var productArray = []; 
+//jobs don't work with parse-server, must move these to cron or something similar
+// Parse.Cloud.job("setItemTypesandCategories", function(req, res) {
 
-	var data = req.body;
-	var promise = new Parse.Promise();
-	var dataJson = JSON.parse(data);
+//     var productArray = []; 
+
+// 	var data = req.body;
+// 	var promise = new Parse.Promise();
+// 	var dataJson = JSON.parse(data);
     
-    //Parse.Cloud.useMasterKey();
-	var length = Object.keys(dataJson).length;
-    console.log(length);
+//     //Parse.Cloud.useMasterKey();
+// 	var length = Object.keys(dataJson).length;
+//     console.log(length);
 
-    for (var i = 0; i < length; i++) {
-        var content = dataJson[i];
+//     for (var i = 0; i < length; i++) {
+//         var content = dataJson[i];
 
-        var id = content.objectId;
+//         var id = content.objectId;
 
-         var query = new Parse.Query("clothing");
-    	query.equalTo("objectId", id);
+//          var query = new Parse.Query("clothing");
+//     	query.equalTo("objectId", id);
  
 
-    query.first({
-        success: function(theItem){
+//     query.first({
+//         success: function(theItem){
         
-        	console.log("theItem");
-        	console.log(theItem);
-        	console.log("the content:");
+//         	console.log("theItem");
+//         	console.log(theItem);
+//         	console.log("the content:");
 
-        	for (var j = 0; j < length; j++) {
-        		var newContent = dataJson[j]
-        		var thisId = theItem.id;
-        		console.log(newContent.objectId);
-        		console.log(thisId);
+//         	for (var j = 0; j < length; j++) {
+//         		var newContent = dataJson[j]
+//         		var thisId = theItem.id;
+//         		console.log(newContent.objectId);
+//         		console.log(thisId);
 
-        		if (newContent.objectId == thisId) {
-        			theItem.set('itemType',newContent.itemType);
-        			theItem.set('itemCategory', newContent.itemCategory);
-        			productArray.push(theItem);
-        			console.log(newContent);
-        		}
+//         		if (newContent.objectId == thisId) {
+//         			theItem.set('itemType',newContent.itemType);
+//         			theItem.set('itemCategory', newContent.itemCategory);
+//         			productArray.push(theItem);
+//         			console.log(newContent);
+//         		}
 
-        		if (productArray.length == length) {
-					Parse.Object.saveAll(productArray, {
-                    success: function(objects) {
-                      console.log("success");
-                        promise.resolve();
-                        res.success();
-                    },
-                    error: function(error) {
-                      console.log("failure");
-                        promise.reject(error.message);
-                        res.error(error);
-                    }
-        			});
-				}
-        	};
-
-
+//         		if (productArray.length == length) {
+// 					Parse.Object.saveAll(productArray, {
+//                     success: function(objects) {
+//                       console.log("success");
+//                         promise.resolve();
+//                         res.success();
+//                     },
+//                     error: function(error) {
+//                       console.log("failure");
+//                         promise.reject(error.message);
+//                         res.error(error);
+//                     }
+//         			});
+// 				}
+//         	};
 
 
-        },
-        error: function(error){
-            response.error("No se encontró al usuario");
-            console.log("didnt find item");
-        }
-    });
 
 
-    };   
+//         },
+//         error: function(error){
+//             response.error("No se encontró al usuario");
+//             console.log("didnt find item");
+//         }
+//     });
+
+
+//     };   
 
  
 
-});
+// });
 
-Parse.Cloud.job("importProducts", function(req, res) {
-  var data = req.body;
-    var promise = new Parse.Promise();
-    console.log(req.body);
-   var dataJson = JSON.parse(data);
+// Parse.Cloud.job("importProducts", function(req, res) {
+//   var data = req.body;
+//     var promise = new Parse.Promise();
+//     console.log(req.body);
+//    var dataJson = JSON.parse(data);
     
-    //Parse.Cloud.useMasterKey();
+//     //Parse.Cloud.useMasterKey();
       
-    var productArray = []; 
+//     var productArray = []; 
 
-var length = Object.keys(dataJson).length;
-    console.log(length);
+// var length = Object.keys(dataJson).length;
+//     console.log(length);
 
-    for (var i = 0; i < length; i++) {
-      console.log(i);
-        var clothingItem = new Parse.Object("clothing");
-        var content = dataJson[i];
-        console.log(content);
-        console.log(content.Title);
-        clothingItem.set('title', content.Title);
-        clothingItem.set('imageURL', content.image);
-        clothingItem.set('brand', content.Brand);
-        clothingItem.set('productCode', content.ProductCode);
-        clothingItem.set('price', content.Price);
-        clothingItem.set('link', content.Link);
-        clothingItem.set('itemCategory', content.itemCategory)
-        clothingItem.set('itemType', content.itemType)
+//     for (var i = 0; i < length; i++) {
+//       console.log(i);
+//         var clothingItem = new Parse.Object("clothing");
+//         var content = dataJson[i];
+//         console.log(content);
+//         console.log(content.Title);
+//         clothingItem.set('title', content.Title);
+//         clothingItem.set('imageURL', content.image);
+//         clothingItem.set('brand', content.Brand);
+//         clothingItem.set('productCode', content.ProductCode);
+//         clothingItem.set('price', content.Price);
+//         clothingItem.set('link', content.Link);
+//         clothingItem.set('itemCategory', content.itemCategory)
+//         clothingItem.set('itemType', content.itemType)
         
 
-        // Parse.Object.save(clothingItem, {
-        //             success: function(objects) {
-        //               console.log("success");
-        //                 promise.resolve();
-        //             },
-        //             error: function(error) {
-        //               console.log("failure");
-        //                 promise.reject(error.message);
-        //             }
-        // });
+//         // Parse.Object.save(clothingItem, {
+//         //             success: function(objects) {
+//         //               console.log("success");
+//         //                 promise.resolve();
+//         //             },
+//         //             error: function(error) {
+//         //               console.log("failure");
+//         //                 promise.reject(error.message);
+//         //             }
+//         // });
 
 
-        productArray.push(clothingItem);
+//         productArray.push(clothingItem);
 
-    };   
+//     };   
   
-        Parse.Object.saveAll(productArray, {
-                    success: function(objects) {
-                      console.log("success");
-                        promise.resolve();
-                        res.success();
-                    },
-                    error: function(error) {
-                      console.log("failure");
-                        promise.reject(error.message);
-                        res.error(error);
-                    }
-        });
+//         Parse.Object.saveAll(productArray, {
+//                     success: function(objects) {
+//                       console.log("success");
+//                         promise.resolve();
+//                         res.success();
+//                     },
+//                     error: function(error) {
+//                       console.log("failure");
+//                         promise.reject(error.message);
+//                         res.error(error);
+//                     }
+//         });
   
-});
+// });
 
-Parse.Cloud.job("getPasswordToUser", function(request, response){
-    //Parse.Cloud.useMasterKey();
+// Parse.Cloud.job("getPasswordToUser", function(request, response){
+//     //Parse.Cloud.useMasterKey();
  
-    var query = new Parse.Query(Parse.User);
-    console.log(request.params.userID);
-    query.equalTo("objectId", request.params.userID);
+//     var query = new Parse.Query(Parse.User);
+//     console.log(request.params.userID);
+//     query.equalTo("objectId", request.params.userID);
  
-    query.first({
+//     query.first({
 
-    	useMasterKey: true,
+//     	useMasterKey: true,
 
-        success: function(theUser){
-          console.log("got the user");
-          console.log(theUser.objectId);
-          console.log(theUser.username);
-          console.log(theUser);
-            var password = theUser.password;
+//         success: function(theUser){
+//           console.log("got the user");
+//           console.log(theUser.objectId);
+//           console.log(theUser.username);
+//           console.log(theUser);
+//             var password = theUser.password;
 
-            console.log("The Password: " + password);
+//             console.log("The Password: " + password);
  
-        },
-        error: function(error){
-            response.error("No se encontró al usuario");
-        }
-    });
-});
+//         },
+//         error: function(error){
+//             response.error("No se encontró al usuario");
+//         }
+//     });
+// });
  
