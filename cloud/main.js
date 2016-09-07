@@ -1,4 +1,4 @@
-var moment = require("../moment");
+var moment = require("../node_modules/moment/moment.js");
 
 // Use Parse.Cloud.define to define as many cloud functions as you want.
 // For example:
