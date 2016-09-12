@@ -6,8 +6,8 @@ function sendDailyNotification() {
 
 console.log("in the function");
 
-var userQuery = new Parse.Query(Parse.User)
-var today = moment()
+var userQuery = new Parse.Query(Parse.User);
+var today = moment();
 
 var todayIntroDate = moment().startOf('day');
 
@@ -32,6 +32,7 @@ userQuery.find({
         alert("Error: " + error.code + " " + error.message);
     }
 
+})
 }
 
 sendDailyNotification();
