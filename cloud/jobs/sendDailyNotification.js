@@ -31,7 +31,8 @@ installationQuery.find({
     	console.log("this is the installation:");
     	console.log(results);
         for (var i = 0; i < results.length; i++) {
-            
+            console.log(results[i]);
+           
         }
      console.log("success");
     },
