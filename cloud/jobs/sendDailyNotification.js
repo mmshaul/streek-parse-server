@@ -37,7 +37,8 @@ var messageText = "We picked 5 new items just for YOU! It's time to get back #on
     data: {
       alert: messageText
     }
-  }).then(function() {
+  },
+  { useMasterKey : true}).then(function() {
     // Push was successful
     res.success();
   }, function(error) {
