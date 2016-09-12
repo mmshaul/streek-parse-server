@@ -26,6 +26,20 @@ userQuery.equalTo("objectId", "6FXYjEdgpX");
 
 var installationQuery = new Parse.Query(Parse.Installation);
 installationQuery.equalTo("objectId", "AAkXAE3FNv")
+installationQuery.find({
+    success: function (results) {
+    	console.log("this is the installation:");
+    	console.log(results);
+        for (var i = 0; i < results.length; i++) {
+            
+        }
+     console.log("success");
+    },
+    error: function (error) {
+        alert("Error: " + error.code + " " + error.message);
+    }
+
+})
 
 console.log("we got here");
 
