@@ -21,42 +21,45 @@ var todayIntroDateDay = todayIntroDate._d;
 console.log("today:");
 console.log(todayIntroDateDay);
 
-userQuery.lessThan("lastCompletedDay", todayIntroDateDay);
+//userQuery.lessThan("lastCompletedDay", todayIntroDateDay);
+userQuery.equalTo("objectId", "6FXYjEdgpX");
 
 console.log("we got here");
 
-userQuery.find({
-    success: function (results) {
-    	console.log(results);
-        for (var i = 0; i < results.length; i++) {
-            
-        }
-     console.log("success");
-    },
-    error: function (error) {
-        alert("Error: " + error.code + " " + error.message);
-    }
+var messageText = "We picked 5 new items just for YOU! It's time to get back #onstreek"
 
-})
+  var pushQuery = new Parse.Query(Parse.Installation);
+  pushQuery.matchesQuery("user", userQuery)
+
+
+  Parse.Push.send({
+    where: pushQuery, // Set our Installation query
+    data: {
+      alert: messageText
+    }
+  }).then(function() {
+    // Push was successful
+    res.success();
+  }, function(error) {
+    res.error(error.message);
+    throw "Got an error " + error.code + " : " + error.message;
+  });
+
+// userQuery.find({
+//     success: function (results) {
+//     	console.log(results);
+//         for (var i = 0; i < results.length; i++) {
+            
+//         }
+//      console.log("success");
+//     },
+//     error: function (error) {
+//         alert("Error: " + error.code + " " + error.message);
+//     }
+
+// })
 }
 
 sendDailyNotification();
 
- // var messageText = "We picked 5 new items just for YOU! It's time to get back #onstreek"
-
- //  var pushQuery = new Parse.Query(Parse.Installation);
- //  pushQuery.matchesQuery("user", userQuery)
-
-
- //  Parse.Push.send({
- //    where: pushQuery, // Set our Installation query
- //    data: {
- //      alert: messageText
- //    }
- //  }).then(function() {
- //    // Push was successful
- //    res.success();
- //  }, function(error) {
- //    res.error(error.message);
- //    throw "Got an error " + error.code + " : " + error.message;
- //  });
+ 
