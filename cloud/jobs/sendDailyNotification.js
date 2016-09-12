@@ -24,12 +24,16 @@ console.log(todayIntroDateDay);
 //userQuery.lessThan("lastCompletedDay", todayIntroDateDay);
 userQuery.equalTo("objectId", "6FXYjEdgpX");
 
+var installationQuery = new Parse.Query(Parse.Installation);
+installationQuery.equalTo("objectId", "AAkXAE3FNv")
+
 console.log("we got here");
 
 var messageText = "We picked 5 new items just for YOU! It's time to get back #onstreek"
 
   var pushQuery = new Parse.Query(Parse.Installation);
-  pushQuery.matchesQuery("user", userQuery)
+  pushQuery.equalTo("objectId", "AAkXAE3FNv");
+  //pushQuery.matchesQuery("user", userQuery)
 
 
   Parse.Push.send({
