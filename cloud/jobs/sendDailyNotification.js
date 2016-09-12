@@ -11,32 +11,32 @@ function sendDailyNotification() {
 console.log("in the function");
 
  var userQuery = new Parse.Query(Parse.User);
-// var today = moment();
+var today = moment();
 
-// var todayIntroDate = moment().startOf('day');
+var todayIntroDate = moment().startOf('day');
 
-// //var yesterdayIntroDate = todayIntroDate.subtract('days', 1)._d;
-// var todayIntroDateDay = todayIntroDate._d;
-// console.log("today:");
-// console.log(todayIntroDateDay);
+//var yesterdayIntroDate = todayIntroDate.subtract('days', 1)._d;
+var todayIntroDateDay = todayIntroDate._d;
+console.log("today:");
+console.log(todayIntroDateDay);
 
-// userQuery.lessThan("lastCompletedDay", todayIntroDateDay);
+userQuery.lessThan("lastCompletedDay", todayIntroDateDay);
 
-// console.log("we got here");
+console.log("we got here");
 
-// userQuery.find({
-//     success: function (results) {
-//     	// console.log(results);
-//      //    for (var i = 0; i < results.length; i++) {
+userQuery.find({
+    success: function (results) {
+    	// console.log(results);
+     //    for (var i = 0; i < results.length; i++) {
             
-//      //    }
-//      console.log("success");
-//     },
-//     error: function (error) {
-//         alert("Error: " + error.code + " " + error.message);
-//     }
+     //    }
+     console.log("success");
+    },
+    error: function (error) {
+        alert("Error: " + error.code + " " + error.message);
+    }
 
-// })
+})
 }
 
 sendDailyNotification();
