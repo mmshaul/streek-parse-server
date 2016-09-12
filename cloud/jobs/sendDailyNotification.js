@@ -27,10 +27,10 @@ console.log("we got here");
 
 userQuery.find({
     success: function (results) {
-    	// console.log(results);
-     //    for (var i = 0; i < results.length; i++) {
+    	console.log(results);
+        for (var i = 0; i < results.length; i++) {
             
-     //    }
+        }
      console.log("success");
     },
     error: function (error) {
