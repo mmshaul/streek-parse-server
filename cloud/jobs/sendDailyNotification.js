@@ -3,6 +3,9 @@
 
 function sendDailyNotification() {
  
+
+console.log("in the function");
+
 var userQuery = new Parse.Query(Parse.User)
 var today = moment()
 
@@ -15,12 +18,15 @@ console.log(todayIntroDateDay);
 
 userQuery.lessThan("lastCompletedDay", todayIntroDateDay);
 
+console.log("we got here");
+
 userQuery.find({
     success: function (results) {
-    	console.log(results);
-        for (var i = 0; i < results.length; i++) {
+    	// console.log(results);
+     //    for (var i = 0; i < results.length; i++) {
             
-        }
+     //    }
+     console.log("success");
     },
     error: function (error) {
         alert("Error: " + error.code + " " + error.message);
