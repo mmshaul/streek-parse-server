@@ -1,5 +1,6 @@
 
 var Parse = require('parse/node');
+var moment = require("../node_modules/moment/moment.js");
 Parse.initialize(process.env.APP_ID, process.env.JAVASCRIPT_KEY, process.env.MASTER_KEY);
 Parse.serverURL = process.env.SERVER_URL;
 Parse.Cloud.useMasterKey();
