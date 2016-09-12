@@ -10,13 +10,6 @@ function hello() {
 	console.log("hello melanie and jon");
 }
 
-hello();
-
-
-
-
-
-
 
 
 

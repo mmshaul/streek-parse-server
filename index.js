@@ -6,7 +6,6 @@ var ParseServer = require('parse-server').ParseServer;
 var path = require('path');
 var S3Adapter = require('parse-server').S3Adapter;
 var ParseDashboard = require('parse-dashboard');
-console.log('my bucket: ' + process.env.S3_BUCKET);
 var databaseUri = process.env.DATABASE_URI || process.env.MONGODB_URI;
 var dashboard = new ParseDashboard({
   "allowInsecureHTTP": true,
