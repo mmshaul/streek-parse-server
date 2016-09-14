@@ -7,19 +7,8 @@ Parse.Cloud.useMasterKey();
 
 
 function hello() {
-	console.log("hello melanie and jon");
+	console.log("hello melanie");
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 

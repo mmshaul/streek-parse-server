@@ -22,7 +22,7 @@ console.log("today:");
 console.log(todayIntroDateDay);
 
 //userQuery.lessThan("lastCompletedDay", todayIntroDateDay);
-userQuery.equalTo("objectId", "6FXYjEdgpX");
+userQuery.equalTo("objectId", "yymCLU7VYu");
 
 var installationQuery = new Parse.Query(Parse.Installation);
 installationQuery.equalTo("objectId", "AAkXAE3FNv")
