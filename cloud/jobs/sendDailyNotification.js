@@ -22,7 +22,7 @@ console.log("today:");
 console.log(todayIntroDateDay);
 
 //userQuery.lessThan("lastCompletedDay", todayIntroDateDay);
-userQuery.equalTo("objectId", "yymCLU7VYu");
+//userQuery.equalTo("objectId", "yymCLU7VYu");
 
 var installationQuery = new Parse.Query(Parse.Installation);
 installationQuery.equalTo("objectId", "AAkXAE3FNv")
@@ -32,7 +32,7 @@ installationQuery.find({
     	console.log(results);
         for (var i = 0; i < results.length; i++) {
             console.log(results[i]);
-           
+
         }
      console.log("success");
     },
@@ -47,7 +47,7 @@ console.log("we got here");
 var messageText = "We picked 5 new items just for YOU! It's time to get back #onstreek"
 
   var pushQuery = new Parse.Query(Parse.Installation);
-  pushQuery.equalTo("objectId", "AAkXAE3FNv");
+  pushQuery.equalTo("objectId", "yymCLU7VYu");
   //pushQuery.matchesQuery("user", userQuery)
 
 
