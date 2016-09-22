@@ -6,11 +6,12 @@ Parse.Cloud.useMasterKey();
 
 
 
-function hello() {
+function hello(name) {
 	console.log("hello melanie");
+	console.log(name);
 }
 
-
+hello();
 
 
 
