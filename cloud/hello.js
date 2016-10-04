@@ -2,6 +2,7 @@ var Parse = require('parse/node');
 Parse.initialize(process.env.APP_ID, process.env.JAVASCRIPT_KEY, process.env.MASTER_KEY);
 Parse.serverURL = process.env.SERVER_URL;
 Parse.Cloud.useMasterKey();
+var moment = require("../node_modules/moment/moment.js");
 
 
 
@@ -9,6 +10,9 @@ Parse.Cloud.useMasterKey();
 function hello(name) {
 	console.log("hello melanie");
 	console.log(name);
+	console.log(moment());
+	console.log(moment().startOf('day'));
+	console.log(moment().startOf('day')._d);
 }
 
 hello();
