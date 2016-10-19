@@ -16,9 +16,11 @@ function hello(name) {
 		console.log(obj);
 		var dataJson = JSON.parse(obj);
     
+    console.log('the data:');
+    console.log(dataJson);
     //Parse.Cloud.useMasterKey();
       
-    	var productArray = []; 
+
 
 		var length = Object.keys(dataJson).length;
     	console.log(length);
