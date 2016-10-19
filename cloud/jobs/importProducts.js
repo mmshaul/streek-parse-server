@@ -47,16 +47,16 @@ var pathToFile = process.argv[2]
         clothingItem.set('itemType', content.itemType)
         
 
-        // Parse.Object.save(clothingItem, {
-        //             success: function(objects) {
-        //               console.log("success");
-        //                 promise.resolve();
-        //             },
-        //             error: function(error) {
-        //               console.log("failure");
-        //                 promise.reject(error.message);
-        //             }
-        // });
+        Parse.Object.save(clothingItem, {
+                    success: function(objects) {
+                      console.log("success");
+                        promise.resolve();
+                    },
+                    error: function(error) {
+                      console.log("failure");
+                        promise.reject(error.message);
+                    }
+        });
 
 
         productArray.push(clothingItem);
@@ -66,6 +66,7 @@ var pathToFile = process.argv[2]
 
   console.log('the prodcuts:');
   console.log(productArray);
+  
         Parse.Object.saveAll(productArray, {
                     success: function(objects) {
                       console.log("success");
