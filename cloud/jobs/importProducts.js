@@ -36,13 +36,13 @@ var pathToFile = process.argv[2]
         var clothingItem = new Parse.Object("clothing2");
         var content = dataJson[i];
         console.log(content);
-        console.log(content.Title);
-        clothingItem.set('title', content.Title);
+        console.log(content.title);
+        clothingItem.set('title', content.title);
         clothingItem.set('imageURL', content.image);
-        clothingItem.set('brand', content.Brand);
-        clothingItem.set('productCode', content.ProductCode);
-        clothingItem.set('price', content.Price);
-        clothingItem.set('link', content.Link);
+        clothingItem.set('brand', content.brand);
+        clothingItem.set('productCode', content.productCode);
+        clothingItem.set('price', content.price);
+        clothingItem.set('link', content.link);
         clothingItem.set('itemCategory', content.itemCategory)
         clothingItem.set('itemType', content.itemType)
         
