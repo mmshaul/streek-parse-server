@@ -10,9 +10,7 @@ var moment = require("../node_modules/moment/moment.js");
 function hello(name) {
 	console.log("hello melanie");
 	console.log(name);
-	console.log(moment());
-	console.log(moment().startOf('day'));
-	console.log(moment().startOf('day')._d);
+
 }
 
 hello();
