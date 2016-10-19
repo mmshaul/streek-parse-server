@@ -5,7 +5,7 @@ Parse.Cloud.useMasterKey();
 var jf = require('jsonfile');
 
 
-function importProducts(data) {
+function importProducts() {
 
 
 var pathToFile = process.argv[2]
@@ -87,3 +87,5 @@ var pathToFile = process.argv[2]
 
   
 };
+
+importProducts();
