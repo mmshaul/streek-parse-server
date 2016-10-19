@@ -52,12 +52,12 @@ var api = new ParseServer({
        {
         pfx: 'cert2.0.p12',
         bundleId: 'com.streek2.0',
-        production: true
+        production: false
       },
       {
         pfx: 'certProd.p12',
         bundleId: 'com.streek',
-        production: false
+        production: true
       },
        {
         pfx: 'certProd2.0.p12',
