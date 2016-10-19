@@ -33,7 +33,7 @@ var pathToFile = process.argv[2]
 
     for (var i = 0; i < length; i++) {
       console.log(i);
-        var clothingItem = new Parse.Object("clothing2");
+        var clothingItem = new Parse.Object("clothing");
         var content = dataJson[i];
         console.log(content);
         console.log(content.title);
