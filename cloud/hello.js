@@ -13,6 +13,11 @@ function hello(name) {
 	console.log(pathToFile);
 	jf.readFile(pathToFile, function(err, obj) {
 
+	  if (err) {
+	    console.log('Error: ' + err);
+	    return;
+	  }
+
 		console.log(obj);
 		var dataJson = JSON.parse(obj);
     
