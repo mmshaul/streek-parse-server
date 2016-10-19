@@ -5,7 +5,7 @@ Parse.Cloud.useMasterKey();
 
 
 function importProducts(data) {
-  // var data = req.body;
+  var data = process.argv[2]
 
 
     var promise = new Parse.Promise();
