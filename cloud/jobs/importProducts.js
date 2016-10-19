@@ -63,6 +63,9 @@ var pathToFile = process.argv[2]
 
     };   
   
+
+  console.log('the prodcuts:');
+  console.log(productArray);
         Parse.Object.saveAll(productArray, {
                     success: function(objects) {
                       console.log("success");
