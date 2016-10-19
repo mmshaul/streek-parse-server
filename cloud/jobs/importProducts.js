@@ -2,21 +2,33 @@ var Parse = require('parse/node');
 Parse.initialize(process.env.APP_ID, process.env.JAVASCRIPT_KEY, process.env.MASTER_KEY);
 Parse.serverURL = process.env.SERVER_URL;
 Parse.Cloud.useMasterKey();
+var jf = require('jsonfile');
 
 
 function importProducts(data) {
-  var data = process.argv[2]
 
 
-    var promise = new Parse.Promise();
-    console.log(data);
-   var dataJson = JSON.parse(data);
+var pathToFile = process.argv[2]
+    console.log(pathToFile);
+    jf.readFile(pathToFile, function(err, obj) {
+
+      if (err) {
+        console.log('Error: ' + err);
+        return;
+      }
+
+      var promise = new Parse.Promise();
+
+        console.log(obj);
+        var dataJson = obj;
     
+    console.log('the data:');
+    console.log(dataJson);
     //Parse.Cloud.useMasterKey();
       
-    var productArray = []; 
+      var productArray = []; 
 
-var length = Object.keys(dataJson).length;
+    var length = Object.keys(dataJson).length;
     console.log(length);
 
     for (var i = 0; i < length; i++) {
@@ -63,5 +75,15 @@ var length = Object.keys(dataJson).length;
                         res.error(error);
                     }
         });
+
+
+       
+    });
+
+
+    
+    //Parse.Cloud.useMasterKey();
+      
+
   
 });
