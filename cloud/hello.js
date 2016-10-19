@@ -19,7 +19,7 @@ function hello(name) {
 	  }
 
 		console.log(obj);
-		var dataJson = JSON.parse(obj);
+		var dataJson = obj;
     
     console.log('the data:');
     console.log(dataJson);
