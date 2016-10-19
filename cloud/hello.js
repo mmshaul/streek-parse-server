@@ -16,6 +16,25 @@ function hello(name) {
 });
 
 	console.log(process.argv[2])
+	var data = process.argv[2]
+
+	  var dataJson = JSON.parse(data);
+    
+    //Parse.Cloud.useMasterKey();
+      
+    var productArray = []; 
+
+var length = Object.keys(dataJson).length;
+    console.log(length);
+
+    for (var i = 0; i < length; i++) {
+      console.log(i);
+        
+        var content = dataJson[i];
+        console.log(content);
+        console.log(content.Title);
+
+    };  
 }
 
 hello();
