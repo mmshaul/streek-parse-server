@@ -12,7 +12,9 @@ function hello(name) {
 	var pathToFile = process.argv[2]
 	console.log(pathToFile);
 	jf.readFile(pathToFile, function(err, obj) {
-		var dataJson = JSON.parse(data);
+
+		console.log(obj);
+		var dataJson = JSON.parse(obj);
     
     //Parse.Cloud.useMasterKey();
       
