@@ -32,7 +32,7 @@ var length = Object.keys(dataJson).length;
         
         var content = dataJson[i];
         console.log(content);
-        console.log(content.Title);
+        console.log(content.title);
 
     };  
 }
