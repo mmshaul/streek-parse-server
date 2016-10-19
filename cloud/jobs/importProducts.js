@@ -86,4 +86,4 @@ var pathToFile = process.argv[2]
       
 
   
-});
+};
