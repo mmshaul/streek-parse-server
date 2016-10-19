@@ -3,38 +3,35 @@ Parse.initialize(process.env.APP_ID, process.env.JAVASCRIPT_KEY, process.env.MAS
 Parse.serverURL = process.env.SERVER_URL;
 Parse.Cloud.useMasterKey();
 var moment = require("../node_modules/moment/moment.js");
-
+var jf = require('jsonfile');
 
 
 
 function hello(name) {
-	console.log("hello melanie");
-	console.log(name);
 
-	process.argv.forEach(function (val, index, array) {
-  console.log(index + ': ' + val);
-});
-
-	console.log(process.argv[2])
-	var data = process.argv[2]
-
-	  var dataJson = JSON.parse(data);
+	var pathToFile = process.argv[2]
+	console.log(pathToFile);
+	jf.readFile(pathToFile, function(err, obj) {
+		var dataJson = JSON.parse(data);
     
     //Parse.Cloud.useMasterKey();
       
-    var productArray = []; 
+    	var productArray = []; 
 
-var length = Object.keys(dataJson).length;
-    console.log(length);
+		var length = Object.keys(dataJson).length;
+    	console.log(length);
 
-    for (var i = 0; i < length; i++) {
-      console.log(i);
+    	for (var i = 0; i < length; i++) {
+      		console.log(i);
         
-        var content = dataJson[i];
-        console.log(content);
-        console.log(content.title);
+        	var content = dataJson[i];
+       		 console.log(content);
+        	console.log(content.title);
 
-    };  
+    	};  
+	});
+
+	 
 }
 
 hello();
