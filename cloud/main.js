@@ -89,6 +89,28 @@ Parse.Cloud.define("getRefCodeUseCount", function(req, res) {
     );
 });
 
+Parse.Cloud.define("getAdminBoolean", function(req, res) {
+ 
+  //Parse.Cloud.useMasterKey();
+  var userID = req.params.userID;
+ 
+  getUser(userID, {useMasterKey: true}).then
+    (   
+        //When the promise is fulfilled function(user) fires, and now we have our USER!
+        function(user)
+        {
+            var isAdmin = user.get("admin");
+            console.log(isAdmin);
+            res.success(isAdmin);
+        }
+        ,
+        function(error)
+        {
+            res.error(error);
+        }
+    );
+});
+
 function getUser(userId)
 {
     //Parse.Cloud.useMasterKey();
